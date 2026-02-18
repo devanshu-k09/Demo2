@@ -1,0 +1,12 @@
+#!/bin/sh
+
+echo "Running pre-commit hook..."
+
+# Block commit if .py file has word 'print'
+if grep -q "print" *.py 2>/dev/null; then
+  echo "Commit blocked: 'print' found in Python file"
+  exit 1
+fi
+
+echo "Commit allowed"
+exit 0
